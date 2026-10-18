@@ -129,5 +129,3 @@ SELECT MIN(`UNIT COST USD`), MAX(`Unit Cost USD`), MIN(`Unit Price USD`), MAX(`U
 -- MIN(birthday) = 1/1/1936, MAX(birthday) = 9/9/2001
 SELECT MIN(birthday), MAX(birthday) FROM customers;
 
-
-SELECT * From sales;
