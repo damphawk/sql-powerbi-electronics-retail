@@ -120,6 +120,7 @@ LEFT JOIN sales s ON c.customerkey = s.customerkey
 WHERE s.customerkey IS NULL;
 
 -- MIN(orderdate) = 1/1/2016, MAX(order date) = 9/9/20 = MAX(delivery date), MIN(quantity) = 1, MAX(quantity) = 10
+-- Values returned not correct as datatypes are strings
 SELECT MIN(`order date`), MAX(`order date`), MAX(`delivery date`), MIN(quantity), MAX(quantity) FROM sales;
 
 -- MIN(unit cost) = $0.48, MAX(unit cost) = $99.14, MIN(Unit Price) = $0.95, MAX(Unit Price) = $999.90
@@ -127,5 +128,6 @@ SELECT MIN(`order date`), MAX(`order date`), MAX(`delivery date`), MIN(quantity)
 SELECT MIN(`UNIT COST USD`), MAX(`Unit Cost USD`), MIN(`Unit Price USD`), MAX(`Unit Price USD`) FROM products;
 
 -- MIN(birthday) = 1/1/1936, MAX(birthday) = 9/9/2001
+-- Values returned not correct as datatypes are strings
 SELECT MIN(birthday), MAX(birthday) FROM customers;
 
