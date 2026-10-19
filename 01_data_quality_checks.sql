@@ -131,3 +131,8 @@ SELECT MIN(`UNIT COST USD`), MAX(`Unit Cost USD`), MIN(`Unit Price USD`), MAX(`U
 -- Values returned not correct as datatypes are strings
 SELECT MIN(birthday), MAX(birthday) FROM customers;
 
+-- Checking for repeat Order Number and Line Item pairs. 0 rows returned.
+SELECT `Order Number`, `Line Item`, COUNT(*) AS duplicate_count
+FROM sales
+GROUP BY `Order Number`, `Line Item`
+HAVING COUNT(*) > 1;
