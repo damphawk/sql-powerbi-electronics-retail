@@ -1,7 +1,7 @@
 USE electronics_retail;
 
 -- Where does this retailer make money, who are the best customers, and where is it losing value?
--- Answer this using 5 questions smaller questions
+-- Answer this using 5 smaller questions
 /* 
 1) What percent of customers are repeat customers? What is the average time between buying for these customers?
 2) Which 5 products earn the most profit within each category?
