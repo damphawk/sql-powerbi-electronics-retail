@@ -78,7 +78,7 @@ WITH ps AS 	(SELECT p.`product name` AS product_name,
 							RANK() OVER (PARTITION BY Category ORDER BY summed_profit DESC) AS ranking
 					FROM sum_profit)
 -- Returns top 5 products within each category based on profit. Would be reasonable to increase stock in these top products,
--- especially from categories that have higher profits like computers or TV and Video. This can be seen in query results.
+-- especially from categories that have higher profits like computers or Home Appliances. This can be seen in query results.
 SELECT * FROM cat_rankings
 WHERE ranking <= 5
 ORDER BY category, ranking;
@@ -181,9 +181,9 @@ HAVING COUNT(DISTINCT StoreKey) > 1;
                         GROUP BY year, channel)
 
 -- Adds profit margin and revenue share. Profit margin is consistent at ~58% for all years and channels meaning 
--- profit comes from volume and order size. Revenue share for online was slowly going up at ~2% a year until 2021 where
+-- profit comes from volume and order size. Revenue share for online was slowly going up but slowing down each year until 2021 where
 -- it had a larger 5% jump from 2020, but 2021 isn't a full year and ends on 2021-02-20 so keep that in mind.
--- Still, growth of 2% a year for online channel revenue share shows that growth is consistent and online is worth investing into
+-- Still, growth for online channel revenue share shows that growth is consistent and online is worth investing into
 -- Consider expenses like shipping to confirm profitability of online vs in-store.
 -- In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable
 -- differences any year.
@@ -209,7 +209,7 @@ Could potentially offer a promotion timed around the 412 average days between or
 
 2) Which 5 products earn the most profit within each category?
 Would be reasonable to increase stock in these top products, 
-especially from categories that have higher profits like computers or TV and Video which can be seen in the query results.
+especially from categories that have higher profits like computers or Home Appliances which can be seen in the query results.
 
 3) What are the unsold products, inactive stores, and customers without purchases?
 25 Unsold Products. 23 unsold lamps and 1 unsold washer & dryer come from Home Appliances. 
@@ -229,22 +229,23 @@ orders to customers ratio as the other age groups (orders/customers) of around 1
 5) How does online compare to in-store when it comes to orders, revenue, average order value, profit margin, and revenue share,
 and how does that change per year?
 Profit margin is consistent at ~58% for all years and channels meaning 
-profit comes from volume and order size. Revenue share for online was slowly going up at ~2% a year until 2021 where
-it had a larger 5% jump from 2020, but 2021 isn't a full year and ends on 2021-02-20 so keep that in mind.
-Still, growth of 2% a year for online channel revenue share shows that growth is consistent and online is worth investing into
+profit comes from volume and order size. Revenue share for online was slowly going up each year, though more slowly each 
+year until 2021 where it had a larger 5% jump from 2020, but 2021 isn't a full year and ends on 2021-02-20 so keep that in mind.
+Still, yearly growth for online channel revenue share shows that growth is consistent and online is worth investing into
 Consider expenses like shipping to confirm profitability of online vs in-store.
 In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable
 differences any year.
 
 --Where does this retailer make money, who are the best customers, and where is it losing value?
 WHERE: Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase
-		average order size. Most profit comes from Computer and Tv and Video categories. Check top 5 products in each category
+		average order size. Most profit comes from Computer and Home Appliance categories. Check top 5 products in each category
         to see what products business should focus on promoting to increase profit. Revenue share of online is increasing
-        compared to in-stores, but at a usual rate of ~2% and a max of 5%, albeit 5% comes from an incomplete year.
+        compared to in-stores, but slowing down each year and a max of 5%, albeit 5% comes from an incomplete year.
         Consider expenses like shipping to confirm profitability of online vs in-store.
 WHO: 61% of customers who make a purchase end up becoming a repeat customer with repeat customers averaging a 412 day window 
 		between	purchases. Orders to customers ratio is similar for all age groups meaning age groups order at similar rates
 		despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
 LOSING VALUE: 25 products have never been sold (23 being lamps, 1 being a washer & dryer, 1 being a Home Theater System)
+				24 products come from Home Appliance category and 1 product comes from TV and video.
 				Nine stores have no recorded sales. 22% of customers have not made a purchase.
 */
