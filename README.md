@@ -2,7 +2,7 @@
 
 SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit.
 
-![Dashboard Preview](Dashboard/Page 1.png)
+![Dashboard Preview](Dashboard/Page%201.png)
 
 Where does this retailer make money, who are the best customers, and where is it losing value?
 
