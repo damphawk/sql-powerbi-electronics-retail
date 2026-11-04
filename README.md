@@ -15,7 +15,8 @@ This analysis answers the business question by breaking it into five smaller que
 5) How does online compare to in-store when it comes to orders, revenue, average order value, profit margin, and revenue share, and how does that change per year?
 
 ## Data
-- **Source:** Dataset is "Global Electronics Retailer" from Maven Analytics' Data Playground. https://app.mavenanalytics.io/datasets
+- **Source:** Dataset is "Global Electronics Retailer" from Maven Analytics' Data Playground.
+  https://mavenanalytics.io/data-playground
 - **Tables:**
 1. Customers table: in which one row represents a unique customer bearing a unique customer key, their gender, name,
 geographical information, and birthday.
@@ -35,7 +36,7 @@ Used Excel (data inspection), MySQL, and Power BI.
 ## The Process
 1. **Loading Data:**
 - Checked the tables with Excel to check row counts and kept an eye out for any potential problems.
-- Noticed only column with blanks was delivery dates from sales table having 49,719 blanks, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
+- Noticed only main column with blanks was delivery dates from sales table having 49,719 blanks, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
 - There were no major problems and the data was loaded into MySQL.
 - After loading the data into MySQL, the row counts were checked to make sure they matched the CSVs.
 - Columns that should have no NULLS or BLANKS were checked for the presence of NULLS and BLANKS. Note that MySQL import wizard loads blank cells as empty strings and not as NULL, so the delivery date column from sales table needed NULLIF to count NULLS properly.
@@ -75,7 +76,7 @@ MAX(birthday). MIN and MAX values returned were not correct as some columns had 
   
 ## Key Findings
 **Where it makes money**
-- Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size.
+- Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size. Margin barely varies as it doesn't change by channel or year, so it only differs through product mix.
 - Most profit comes from Computers ($11.3M) and Home Appliances ($6.3M) categories which make over half of the total profit ($32.66M).
 - Revenue share of online increased from 16.8% in 2016 to 22.3% in 2020, but revenue share of online was making smaller gains each year. 2021 had a revenue share of 27.5% but only had data until 02/20/2021.
 - Consider expenses like shipping to confirm profitability of online vs in-store.
