@@ -2,6 +2,8 @@
 
 SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit.
 
+![Page 1](Dashboard/Page%201.png)
+
 ## Business Question
 Where does this retailer make money, who are the best customers, and where is it losing value?
 
@@ -17,7 +19,7 @@ This analysis answers the business question by breaking it into five smaller que
 - **Tables:**
 1. Customers table: in which one row represents a unique customer bearing a unique customer key, their gender, name,
 geographical information, and birthday.
-2. Exchange rates: table in which one row represents the exchange rate from USD to another CURRENCY (CAD, AUD, EUR, GBP) on a given date
+2. Exchange rates: table in which one row represents the exchange rate from USD to another CURRENCY (CAD, AUD, EUR, GBP) on a given date. Revenue and profit were already in USD in products table, so exchange rates were not needed.
 3. Products table: in which one row represents a unique product bearing a unique product key, category, subcategory, cost to
 make product, and price product sells for.
 4. Sales table: in which one row represents a line item that was sold to a customer. Bears a order number, line item,
@@ -28,11 +30,22 @@ square meters, and the opening date.
 - **Caveats:** Data is fictional. The data ends on 2/20/2021 for orders, making 2021 a partial year.
 
 ## Tools
-Used MySQL and Power BI
+Used Excel, MySQL, and Power BI.
 
 ## The Process
 1. **Loading Data:**
-Before loading in the data, I checked the tables with Microsoft Excel to check row counts and keep an eye out for any potential problems. Noticed only column with obvious known blanks was delivery dates from sales table, which makes sense as there could be unfulfilled deliveries. There was no major problems and the data was loaded into MySQL. After loading the data, the row counts were checked to make sure they matched the CSVs. Columns that should have no NULLS or BLANKS were checked for the presence of NULLS and BLANKS. Note that MySQL import wizard loads blank cells as empty strings and not as NULL, so the delivery date column from sales table needed NULLIF to count NULLS properly. NULLIF was also needed for the online store row and square meters column from the store table. Online store had empty cell for square meters which isn't problematic.  Next, I checked the primary keys of the customers, products, and stores tables to check for duplicates. No duplicates were found. The same tables were then checked for orphan records and it was found that none existed. The same three tables were checked for unsold products, stores with no purchases, and customers with no purchases. Found that there were 25 unsold products, 9 stores with no purchases, and 3379 customers with no purchases. Checked the sales table to make sure that all order number and line item pairs were unique, which was found to be true. Lastly, ranges and values were checked for. Examples were MIN(orderdate), MAX(orderdate), MIN(unit cost), and MAX(birthday). MIN and MAX values returned were not correct as the datastypes were imported as strings. 
+- Checked the tables with Excel to check row counts and kept an eye out for any potential problems.
+- Noticed only column with known blanks was delivery dates from sales table, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
+- There was no major problems and the data was loaded into MySQL.
+- After loading the data into MySQL, the row counts were checked to make sure they matched the CSVs.
+- Columns that should have no NULLS or BLANKS were checked for the presence of NULLS and BLANKS. Note that MySQL import wizard loads blank cells as empty strings and not as NULL, so the delivery date column from sales table needed NULLIF to count NULLS properly.
+- NULLIF was also needed for the online store row and square meters column from the store table. Online store had empty cell for square meters which is understandable.
+- Checked the primary keys of the customers, products, and stores tables to check for duplicates. No duplicates were found.
+- Check for orphan records with sales rows pointing to missing customers, products, or stores
+- The same three tables were checked for unsold products, stores with no purchases, and customers with no purchases. Found 25 unsold products, 9 stores with no purchases, and 3379 customers with no purchases.
+- Checked the sales table to make sure that all order number and line item pairs were unique, which was found to be true.
+- Lastly, ranges and values were checked for. Examples were MIN(orderdate), MAX(orderdate), MIN(unit cost), and
+MAX(birthday). MIN and MAX values returned were not correct as the datastypes were imported as strings. 
 2. **Cleaning The Data:**
 Checked the datatypes of the columns from the tables using the DESCRIBE function. Changed the columns with wrong datatypes to correct datatypes. Changed date columns to date datatype, changed columns containing currency to decimal datatype, changed empty cell for online  store square meters to NULL, changed square meter column from stores to int, and changed all primary keys to int that weren't already int. The same MIN and MAX functions that were done before the data was cleaned were done once again, now returning correct values. Ex: MIN and MAX order date correctly returned 1/1/2016 and 2/20/2021. Additional logic checks were done. Checked for sales where order date came after delivery date and no such sales existed. Checked for negative sale quantities and none existed. Lastly, primary keys were assigned to the customers, products, and stores table using the ADD PRIMARY KEY function.
 3. **Analyzing The Data:**
@@ -51,18 +64,18 @@ Modeled the data in Power BI making 3 pages based on the business question. The 
   
 ## Key Findings
 **Where it makes money**
-Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size. Most profit comes from Computer and Home Appliance categories which make over half of the total profit. Check top 5 products in each category to see what products business should focus on promoting to increase profit. Revenue share of online is increasing compared to in-stores, but slowing down each year and a max of 5%, albeit 5% comes from an incomplete year. Consider expenses like shipping to confirm profitability of online vs in-store.
+Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size. Most profit comes from Computer($11.3M) and Home Appliance($6.3M) categories which make over half of the total profit($32.66M). Revenue share of online increased from 16.8% in 2016 to 22.3% in 2020, but revenue share of online was making smaller gains each year. 2021 had a revenue share of 27.5% but only had data until 02/20/2021. Consider expenses like shipping to confirm profitability of online vs in-store. In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable differences any year.
 
 **Who are the best customers**
-61% of customers who make a purchase end up becoming a repeat customer with repeat customers averaging a 412 day window between	purchases. Orders to customers ratio is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
+7,272 customers are repeat customers, making up 61% of buyers (buyers being customers who have made a purchase). Repeat customers average a 412 day window between	purchases. Note that due to data ending early in 2021, recent buyers haven't had time to repeat. This could mean that 61% of customers being repeat customers can be an understatement and that window between purchases can be shorter than 412 days. Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,143) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
 
 **Where is this company losing value**
 25 products have never been sold (23 being lamps, 1 being a washer & dryer, 1 being a Home Theater System). 24 products come from Home Appliance category and 1 product comes from TV and video. Nine stores have no recorded sales. 22% of customers have not made a purchase.
 
 ## Recommended Courses of Action
-- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Could also promote top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5% revenue share increase is due to incomplete year or is part of an actual trend.
-- 61% of customers who make a purchase end up becoming a repeat customer. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but shortens the window from 412 days to 365 days between purchases.
-- Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active as stores with no purchases at all are very unlikely. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
+- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Check top 5 products in each category to see what products business should focus on promoting to increase profit. Could also promote top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5% revenue share increase is due to incomplete year or is part of an actual trend.
+- 61% of customers who make a purchase end up becoming a repeat customer. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but could aim to shorten the window from 412 days to 365 days between purchases.
+- Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active. Stores opened in 20012 or earlier meaning they are likely to be inactive. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
 
 ## Dashboard
 ![Page 1](Dashboard/Page%201.png)
@@ -72,17 +85,17 @@ This page highlights where the company earns its money. Consists of total revenu
 This page highlights who are the best customers. Shows total customers, customers who have made a purchase, repeat customers, and percentage of customers who have made a purchase who are repeat customers. Has a table showing age group statistics such as customers, orders, and average order value of the respective age groups. Has a bar chart showing orders per customer by Age Group.
 
 ![Page 3](Dashboard/Page%203.png)
-This page highlights where this retailer is losing money. Shows customers with no purchases, percentage of customers with no purchase, stores with no sales, and unsold products. Has a table showing the tables that have no sales along with the store key, geographical information about the store, and the open date. Has a table showing products that have no sales with the category, subcategory, name, and price of the product.
+This page highlights where this retailer is losing value. Shows customers with no purchases, percentage of customers with no purchase, stores with no sales, and unsold products. Has a table showing the stores that have no sales along with the store key, geographical information about the store, and the open date. Has a table showing products that have no sales with the category, subcategory, name, and price of the product.
 
 ## Limitation
 Margin is gross margin from listed prices. No existence of discounts, shipping fees, or store costs.
 
 ## How to Reproduce
 1. Download data from Maven Analytics (https://app.mavenanalytics.io/datasets). Membership may be required.
-2. Load CSVs into MySQL database named electronics_retail
+2. Load CSVs into MySQL database named electronics_retail. Import dates and prices in as text.
 3. Run the scripts in `MySQL/` in numbered order
 4. Open Power BI file and point it at your MySQL database
 
 ## About me
-I am Paolo Perez. I am targeting a role as a entry data analyst.  
+I am Paolo Perez. I am targeting a role as an entry-level data analyst.  
 **LinkedIn:** www.linkedin.com/in/paolo-yuri-perez-b196b742a
