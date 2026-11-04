@@ -31,7 +31,9 @@ square meters, and the opening date.
 - **Caveats:** Data is fictional. The data ends on 2/20/2021 for orders, making 2021 a partial year.
 
 ## Tools
-Used Excel (data inspection), MySQL, and Power BI.
+- Excel (data inspection)
+- MySQL: CTEs, window functions (LAG,RANK, SUM OVER), inner/left/cross joins, subqueries, CASE WHEN, DATEDIFF, TIMESTAMPDIFF, STR_TO_DATE, aggregation, NULLIF, CAST, ALTER, and UPDATE
+- Power BI.
 
 ## The Process
 1. **Loading Data:**
@@ -84,7 +86,8 @@ MAX(birthday). MIN and MAX values returned were not correct as some columns had 
 
 **Who are the best customers**
 - 7,272 customers are repeat customers, making up 61% of buyers (buyers being customers who have made a purchase).
-- Repeat customers average a 412 day window between	purchases. Note that due to data ending early in 2021, recent buyers haven't had time to repeat. This could mean that 61% of customers being repeat customers can be an understatement and that window between purchases can be longer than 412 days as there can be a gap that ends after the date cutoff.
+- Repeat customers average a 412 day window between	purchases.
+- Data ends in 02/20/2021, so 61% is likely understated and true gap is likely longer than 412 days.
 - Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,144) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group.
 
 **Where is this company losing value**
