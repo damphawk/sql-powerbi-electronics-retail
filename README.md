@@ -33,7 +33,7 @@ square meters, and the opening date.
 ## Tools
 - Excel (data inspection)
 - MySQL: CTEs, window functions (LAG,RANK, SUM OVER), inner/left/cross joins, subqueries, CASE WHEN, DATEDIFF, TIMESTAMPDIFF, STR_TO_DATE, aggregation, NULLIF, CAST, ALTER, and UPDATE
-- Power BI.
+- Power BI
 
 ## The Process
 1. **Loading Data:**
