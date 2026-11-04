@@ -1,4 +1,4 @@
-# sql-powerbi-electronics-retail-analysis
+# Analysis of Electronic Retailer using Excel, MySQL, and Power BI
 
 SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit.
 
