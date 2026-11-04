@@ -84,5 +84,5 @@ Margin is gross margin from listed prices. No existence of discounts, shipping f
 4. Open Power BI file and point it at your MySQL database
 
 ## About me
-I am Paolo Perez. I am targeting a role as a entry data analyst.
+I am Paolo Perez. I am targeting a role as a entry data analyst.  
 **LinkedIn:** www.linkedin.com/in/paolo-yuri-perez-b196b742a
