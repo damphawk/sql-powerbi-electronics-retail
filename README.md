@@ -1,6 +1,6 @@
 # Analysis of Electronics Retailer using MySQL and Power BI
 
-SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit. Retailer had ($55.76M revenue, $32.66M profit, 26,326 orders).
+SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit. Retailer had $55.76M in revenue and $32.66M in profit across 26,326 orders.
 
 ![Page 1](Dashboard/Page%201.png)
 
@@ -30,12 +30,12 @@ square meters, and the opening date.
 - **Caveats:** Data is fictional. The data ends on 2/20/2021 for orders, making 2021 a partial year.
 
 ## Tools
-Used Excel(data inspection), MySQL, and Power BI.
+Used Excel (data inspection), MySQL, and Power BI.
 
 ## The Process
 1. **Loading Data:**
 - Checked the tables with Excel to check row counts and kept an eye out for any potential problems.
-- Noticed only column with several known blanks was delivery dates from sales table, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
+- Noticed only column with known blanks was delivery dates from sales table having 49,719 blanks, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
 - There were no major problems and the data was loaded into MySQL.
 - After loading the data into MySQL, the row counts were checked to make sure they matched the CSVs.
 - Columns that should have no NULLS or BLANKS were checked for the presence of NULLS and BLANKS. Note that MySQL import wizard loads blank cells as empty strings and not as NULL, so the delivery date column from sales table needed NULLIF to count NULLS properly.
@@ -45,7 +45,7 @@ Used Excel(data inspection), MySQL, and Power BI.
 - The same three tables were checked for unsold products, stores with no purchases, and customers with no purchases. Found 25 unsold products, 9 stores with no purchases, and 3379 customers with no purchases.
 - Checked the sales table to make sure that all order number and line item pairs were unique, which was found to be true.
 - Lastly, ranges and values were checked for. Examples were MIN(orderdate), MAX(orderdate), MIN(unit cost), and
-MAX(birthday). MIN and MAX values returned were not correct as some columns had wrong the wrong datatype. 
+MAX(birthday). MIN and MAX values returned were not correct as some columns had the wrong datatype. 
 2. **Cleaning The Data:**
 - Checked the datatypes of the columns from the tables using the DESCRIBE function.
 - Changed the columns with wrong datatypes to correct datatypes.
@@ -75,18 +75,23 @@ MAX(birthday). MIN and MAX values returned were not correct as some columns had 
   
 ## Key Findings
 **Where it makes money**
-Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size. Most profit comes from Computer($11.3M) and Home Appliance($6.3M) categories which make over half of the total profit($32.66M). Revenue share of online increased from 16.8% in 2016 to 22.3% in 2020, but revenue share of online was making smaller gains each year. 2021 had a revenue share of 27.5% but only had data until 02/20/2021. Consider expenses like shipping to confirm profitability of online vs in-store. In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable differences any year.
+- Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size.
+- Most profit comes from Computer ($11.3M) and Home Appliance ($6.3M) categories which make over half of the total profit ($32.66M).
+- Revenue share of online increased from 16.8% in 2016 to 22.3% in 2020, but revenue share of online was making smaller gains each year. 2021 had a revenue share of 27.5% but only had data until 02/20/2021.
+- Consider expenses like shipping to confirm profitability of online vs in-store. In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable differences any year.
 
 **Who are the best customers**
-7,272 customers are repeat customers, making up 61% of buyers (buyers being customers who have made a purchase). Repeat customers average a 412 day window between	purchases. Note that due to data ending early in 2021, recent buyers haven't had time to repeat. This could mean that 61% of customers being repeat customers can be an understatement and that window between purchases can be longer than 412 days as there can be a gap that ends after the date cutoff. Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,144) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
+- 7,272 customers are repeat customers, making up 61% of buyers (buyers being customers who have made a purchase).
+- Repeat customers average a 412 day window between	purchases. Note that due to data ending early in 2021, recent buyers haven't had time to repeat. This could mean that 61% of customers being repeat customers can be an understatement and that window between purchases can be longer than 412 days as there can be a gap that ends after the date cutoff.
+- Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,144) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
 
 **Where is this company losing value**
 25 products have never been sold (24 Home Appliances: 23 lamps and 1 washer & dryer, plus 1 Home Theater System in TV and Video). Nine stores have no recorded sales but all stores had opened 2012 or earlier. 22% of customers (3379) have not made a purchase.
 
 ## Recommended Courses of Action
-- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Check and also promote top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5 percentage point revenue share increase is due to incomplete year or is part of an actual trend.
+- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Prioritize stock and promotion for the top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5 percentage point revenue share increase is due to incomplete year or is part of an actual trend.
 - 61% of customers who make a purchase end up becoming a repeat customer. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but could aim to shorten the window from 412 days to 365 days between purchases.
-- Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active. Stores opened in 2012 so having no sales since their opening is very unlikely. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
+- Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active. Stores opened in 2012 or earlier so having no sales from 2016 to 2021 is very unlikely. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
 
 ## Dashboard
 ![Page 1](Dashboard/Page%201.png)
@@ -99,12 +104,13 @@ This page highlights who are the best customers. Shows total customers, customer
 This page highlights where this retailer is losing value. Shows customers with no purchases, percentage of customers with no purchase, stores with no sales, and unsold products. Has a table showing the stores that have no sales along with the store key, geographical information about the store, and the open date. Has a table showing products that have no sales with the category, subcategory, name, and price of the product.
 
 ## Limitation
-Margin is gross margin from listed prices. No existence of discounts, shipping fees, or store costs.
+Margin is gross margin from listed prices. The data has no mention of discounts, shipping fees, or store costs.  
+Data cannot show why stores or customers have no sales. 
 
 ## How to Reproduce
-1. Download data from Maven Analytics (https://app.mavenanalytics.io/datasets). Membership may be required.
+1. Download data from Maven Analytics (https://mavenanalytics.io/data-playground). 
 2. Load CSVs into MySQL database named electronics_retail. Import dates and prices in as text.
-3. Run the scripts in `MySQL/` in numbered order
+3. Run the scripts in `MySQL/` in numbered order. Cleaning scripts only work on freshly imported data.
 4. Open Power BI file and point it at your MySQL database
 
 ## About me
