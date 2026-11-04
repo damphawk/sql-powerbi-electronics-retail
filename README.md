@@ -67,5 +67,9 @@ Profit margin is ~58% in every channel and year, so a way to make more profit is
 ## Dashboard
 ![Page 1](Dashboard/Page%201.png)
 This page highlights where the company earns its money. Consists of total revenue, total profit, and total orders. Shows profit and unit sold by category, shows revenue share by channel, and profit margin by channel.
+
 ![Page 2](Dashboard/Page%202.png)
 This page highlights who are the best customers. Shows total customers, customers who have made a purchase, repeat customers, and percentage of customers who have made a purchase who are repeat customers. Has a table showing age group statistics such as customers, orders, and average order value of the respective age groups. Has a bar chart showing orders per customer by Age Group.
+
+![Page 3](Dashboard/Page%03.png)
+This page highlights where this retailer is losing money. Shows customers with no purchases, percentage of customers with no purchase, stores with no sales, and unsold products. Has a table showing the tables that have no sales along with the store key, geographical information about the store, and the open date. Has a table showing products that have no sales with the category, subcategory, name, and price of the product.
