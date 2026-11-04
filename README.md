@@ -17,11 +17,16 @@ This analysis answers the business question by breaking it into five smaller que
 ## Data
 - **Source:** Dataset is "Global Electronics Retailer" from Maven Analytics' Data Playground. https://app.mavenanalytics.io/datasets
 - **Tables:**
-- Customers table in which one row represents a unique customer bearing a unique customer key, their gender, name, geographical information, and birthday.
-- exchange rates table in which one row represents the exchange rate from USD to another CURRENCY (CAD, AUD, EUR, GBP) on a given date
-- Products table in which one row represents a unique product bearing a unique product key, category, subcategory, cost to make product, and price product sells for.
-- sales table in which one row represents a line item that was sold to a customer. Bears a order number, line item, customer key, store key, product key, order dates, and delivery dates
-- Stores table in which each row represents a unique store bearing a unique store key, geographical information, size in square meters, and the opening date.
+  Customers table: in which one row represents a unique customer bearing a unique customer key, their gender, name,
+  geographical information, and birthday.
+  Exchange rates: table in which one row represents the exchange rate from USD to another CURRENCY (CAD, AUD, EUR, GBP) on a
+  given date
+  Products table: in which one row represents a unique product bearing a unique product key, category, subcategory, cost to
+  make product, and price product sells for.
+  Sales table: in which one row represents a line item that was sold to a customer. Bears a order number, line item,
+  customer key, store key, product key, order dates, and delivery dates
+  Stores table: in which each row represents a unique store bearing a unique store key, geographical information, size in
+  square meters, and the opening date.
 - **Size and Range:** Customers table has 15,266 rows. Products table has 2517 rows. Sales table has 62884 rows. Stores table has 67 rows. Exchange rates table has 11,215 rows. Analyzed based on order date range of 1/1/2016 to 2/20/2021.
 - **Caveats:** Data is fictional. The data ends on 2/20/2021 for orders, making 2021 a partial year.
 
