@@ -2,8 +2,6 @@
 
 SQL and Power BI analysis of electronics retail dataset. Found that Computers and Home Appliances earn over half of the profit.
 
-![Dashboard Preview](Dashboard/Page%201.png)
-
 ## Business Question
 Where does this retailer make money, who are the best customers, and where is it losing value?
 
@@ -53,4 +51,21 @@ Modeled the data in Power BI making 3 pages based on the business question. The 
   
 ## Key Findings
 **Where it makes money**
+Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size. Most profit comes from Computer and Home Appliance categories which make over half of the total profit. Check top 5 products in each category to see what products business should focus on promoting to increase profit. Revenue share of online is increasing compared to in-stores, but slowing down each year and a max of 5%, albeit 5% comes from an incomplete year. Consider expenses like shipping to confirm profitability of online vs in-store.
 
+**Who are the best customers**
+61% of customers who make a purchase end up becoming a repeat customer with repeat customers averaging a 412 day window between	purchases. Orders to customers ratio is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
+
+**Where is this company losing value**
+25 products have never been sold (23 being lamps, 1 being a washer & dryer, 1 being a Home Theater System). 24 products come from Home Appliance category and 1 product comes from TV and video. Nine stores have no recorded sales. 22% of customers have not made a purchase.
+
+## Recommended Courses of Action
+- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Could also promote top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5% revenue share increase is due to incomplete year or is part of an actual trend.
+- 61% of customers who make a purchase end up becoming a repeat customer. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but shortens the window from 412 days to 365 days between purchases.
+- Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active as stores with no purchases at all are very unlikely. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
+
+## Dashboard
+![Page 1](Dashboard/Page%201.png)
+This page highlights where the company earns its money. Consists of total revenue, total profit, and total orders. Shows profit and unit sold by category, shows revenue share by channel, and profit margin by channel.
+![Page 2](Dashboard/Page%202.png)
+This page highlights who are the best customers. Shows total customers, customers who have made a purchase, repeat customers, and percentage of customers who have made a purchase who are repeat customers. Has a table showing age group statistics such as customers, orders, and average order value of the respective age groups. Has a bar chart showing orders per customer by Age Group.
