@@ -73,3 +73,9 @@ This page highlights who are the best customers. Shows total customers, customer
 
 ![Page 3](Dashboard/Page%203.png)
 This page highlights where this retailer is losing money. Shows customers with no purchases, percentage of customers with no purchase, stores with no sales, and unsold products. Has a table showing the tables that have no sales along with the store key, geographical information about the store, and the open date. Has a table showing products that have no sales with the category, subcategory, name, and price of the product.
+
+## Limitation
+Margin is gross margin from listed prices. No existence of discounts, shipping fees, or store costs.
+
+## Repository
+`sql/`01_data_quality_chekcks.sql
