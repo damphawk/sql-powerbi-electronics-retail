@@ -35,7 +35,7 @@ Used Excel (data inspection), MySQL, and Power BI.
 ## The Process
 1. **Loading Data:**
 - Checked the tables with Excel to check row counts and kept an eye out for any potential problems.
-- Noticed only column with known blanks was delivery dates from sales table having 49,719 blanks, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
+- Noticed only column with blanks was delivery dates from sales table having 49,719 blanks, as only online orders had delivery dates meaning in-store sales had blank delivery dates.
 - There were no major problems and the data was loaded into MySQL.
 - After loading the data into MySQL, the row counts were checked to make sure they matched the CSVs.
 - Columns that should have no NULLS or BLANKS were checked for the presence of NULLS and BLANKS. Note that MySQL import wizard loads blank cells as empty strings and not as NULL, so the delivery date column from sales table needed NULLIF to count NULLS properly.
@@ -76,21 +76,22 @@ MAX(birthday). MIN and MAX values returned were not correct as some columns had 
 ## Key Findings
 **Where it makes money**
 - Profit margin is ~58% in every channel and year, so a way to make more profit is to make more sales and increase average order size.
-- Most profit comes from Computer ($11.3M) and Home Appliance ($6.3M) categories which make over half of the total profit ($32.66M).
+- Most profit comes from Computers ($11.3M) and Home Appliances ($6.3M) categories which make over half of the total profit ($32.66M).
 - Revenue share of online increased from 16.8% in 2016 to 22.3% in 2020, but revenue share of online was making smaller gains each year. 2021 had a revenue share of 27.5% but only had data until 02/20/2021.
-- Consider expenses like shipping to confirm profitability of online vs in-store. In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable differences any year.
+- Consider expenses like shipping to confirm profitability of online vs in-store.
+- In-Store consistently had larger total orders but average revenue per order between in-store and online didn't have notable differences any year.
 
 **Who are the best customers**
 - 7,272 customers are repeat customers, making up 61% of buyers (buyers being customers who have made a purchase).
 - Repeat customers average a 412 day window between	purchases. Note that due to data ending early in 2021, recent buyers haven't had time to repeat. This could mean that 61% of customers being repeat customers can be an understatement and that window between purchases can be longer than 412 days as there can be a gap that ends after the date cutoff.
-- Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,144) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group. Best to target repeat customers as core group.
+- Orders to customers ratio (1.68-1.74) and average order value ($2,073-$2,144) is similar for all age groups meaning age groups order at similar rates despite 70+ year olds being the largest age group.
 
 **Where is this company losing value**
-25 products have never been sold (24 Home Appliances: 23 lamps and 1 washer & dryer, plus 1 Home Theater System in TV and Video). Nine stores have no recorded sales but all stores had opened 2012 or earlier. 22% of customers (3379) have not made a purchase.
+25 products have never been sold (24 Home Appliances: 23 lamps and 1 washer & dryer, plus 1 Home Theater System in TV and Video). Nine stores have no recorded sales but these stores had opened 2012 or earlier. 22% of customers (3379) have not made a purchase.
 
 ## Recommended Courses of Action
-- Most profit comes from Computer and Home Appliance categories so it is sensible to promote these products. Prioritize stock and promotion for the top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5 percentage point revenue share increase is due to incomplete year or is part of an actual trend.
-- 61% of customers who make a purchase end up becoming a repeat customer. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but could aim to shorten the window from 412 days to 365 days between purchases.
+- Most profit comes from Computers and Home Appliances categories so it is sensible to promote these products, despite Home Appliances having 24 of 25 unsold products. Prioritize stock and promotion for the top 5 products in each category to try and increase profit. Further keep an eye on online channel to see if 5 percentage point revenue share increase is due to incomplete year or is part of an actual trend.
+- 61% of customers who make a purchase end up becoming a repeat customer. Best to target repeat customers as core group. Could offer a promotion based on the 412 day average between purchases for repeat customers. An example of such a promotion could be a discount offered at around a year after purchase. This not only incentivizes purchases and repeat customers, but could aim to shorten the window from 412 days to 365 days between purchases.
 - Double check the products to make sure that they are still actively for sale. If still active, could provide discounts for those products to rid of stock or could combine these products with more popular products as a bundle. Also check the stores to make sure that they are still active. Stores opened in 2012 or earlier so having no sales from 2016 to 2021 is very unlikely. For customers, could send out a survey to see why these customers have not made a purchase yet. Could also incentivize first time buyers with a first time buyer discount.
 
 ## Dashboard
