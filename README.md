@@ -78,4 +78,4 @@ This page highlights where this retailer is losing money. Shows customers with n
 Margin is gross margin from listed prices. No existence of discounts, shipping fees, or store costs.
 
 ## Repository
-`sql/`01_data_quality_chekcks.sql
+`MySQL/`01_data_quality_checks.sql
