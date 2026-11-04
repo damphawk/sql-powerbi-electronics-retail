@@ -77,5 +77,12 @@ This page highlights where this retailer is losing money. Shows customers with n
 ## Limitation
 Margin is gross margin from listed prices. No existence of discounts, shipping fees, or store costs.
 
-## Repository
-`MySQL/`01_data_quality_checks.sql
+## How to Reproduce
+1. Download data from Maven Analytics (https://app.mavenanalytics.io/datasets). Membership may be required.
+2. Load CSVs into MySQL database named electronics_retail
+3. Run the scripts in `MySQL/` in numbered order
+4. Open Power BI file and point it at your MySQL database
+
+## About me
+I am Paolo Perez. I am targeting a role as a entry data analyst.
+**LinkedIn:** www.linkedin.com/in/paolo-yuri-perez-b196b742a
